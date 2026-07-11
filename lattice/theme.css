@@ -1,0 +1,437 @@
+/* ============================================================
+   The Lattice Coalition — theme
+   Systems-oriented · institutional · report-grade
+   IBM Plex Serif (display) + IBM Plex Sans (body) + Plex Mono (data)
+   ============================================================ */
+
+:root {
+  --ground: #F7F7F5;
+  --ground-2: #EDEDE8;
+  --panel: #FFFFFF;
+  --ink: #24272B;
+  --ink-2: #565C63;
+  --accent: #C0562F;
+  --accent-ink: #A34524;
+  --accent-soft: #F2DED3;
+  --deep: #24272B;
+  --deep-ink: #F7F7F5;
+  --deep-ink-2: #A7ADB5;
+  --line: #DBDBD3;
+  --steel: #5B6B7C;
+
+  --font-display: "IBM Plex Serif", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-lg: 8px;
+}
+
+h1, h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Numbered section eyebrows */
+.lat-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent-ink);
+  margin-bottom: var(--s-3);
+  text-transform: uppercase;
+}
+
+.section--deep .lat-num {
+  color: var(--deep-ink-2);
+}
+
+/* ---------- Hero ---------- */
+
+.lat-hero {
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.lat-hero__inner {
+  max-width: 44rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lat-hero h1 {
+  margin-bottom: var(--s-5);
+}
+
+.lat-hero .lede {
+  margin-bottom: var(--s-6);
+}
+
+.lat-hero__lattice {
+  position: absolute;
+  right: clamp(-4rem, -2vw, 0rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(320px, 34vw, 520px);
+  pointer-events: none;
+}
+
+@media (max-width: 62rem) {
+  .lat-hero__lattice { display: none; }
+}
+
+/* line-draw on load */
+.lat-hero__lattice path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: lat-draw 1.6s var(--ease-out) 0.2s forwards;
+}
+
+@keyframes lat-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lat-hero__lattice path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Member cards ---------- */
+
+.lat-member {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+
+a.lat-member:hover {
+  border-color: var(--member-color, var(--steel));
+  box-shadow: var(--shadow-1);
+}
+
+.lat-member__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--member-color, var(--steel));
+  margin-bottom: var(--s-2);
+}
+
+.lat-member h3 {
+  font-size: var(--fs-md);
+  margin: 0;
+}
+
+.lat-member p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0;
+  flex: 1;
+}
+
+.lat-member__area {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+a.lat-member .lat-member__visit {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent-ink);
+  margin-top: var(--s-2);
+}
+
+.lat-reach {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+  border-block: 1px solid var(--line);
+  padding-block: var(--s-5);
+}
+
+@media (max-width: 56rem) {
+  .lat-reach { grid-template-columns: repeat(2, 1fr); }
+}
+
+.lat-reach div {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--s-4);
+}
+
+.lat-reach strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  display: block;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.lat-reach span {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+/* ---------- Priorities ---------- */
+
+.lat-priority {
+  border-top: 2px solid var(--steel);
+  padding-top: var(--s-4);
+}
+
+.lat-priority .lat-num {
+  color: var(--steel);
+  margin-bottom: var(--s-2);
+}
+
+.lat-priority h3 {
+  font-size: var(--fs-md);
+  margin-bottom: var(--s-2);
+}
+
+.lat-priority p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* ---------- Funding flow diagram ---------- */
+
+.lat-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1.2fr auto 1fr auto 1fr;
+  gap: var(--s-3);
+  align-items: stretch;
+  margin-top: var(--s-6);
+}
+
+@media (max-width: 60rem) {
+  .lat-flow {
+    grid-template-columns: 1fr;
+  }
+  .lat-flow__arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+}
+
+.lat-flow__node {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.lat-flow__node--hub {
+  border-color: var(--accent);
+  border-width: 2px;
+}
+
+.lat-flow__node h3 {
+  font-size: var(--fs-base);
+  margin-bottom: var(--s-2);
+}
+
+.lat-flow__node p {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.lat-flow__node ul {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  margin: var(--s-2) 0 0;
+  padding-left: 1.1em;
+}
+
+.lat-flow__node li {
+  margin-bottom: var(--s-1);
+}
+
+.lat-flow__arrow {
+  align-self: center;
+  color: var(--steel);
+  font-size: var(--fs-lg);
+  font-family: var(--font-mono);
+}
+
+.lat-flow__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  display: block;
+  margin-bottom: var(--s-2);
+}
+
+/* ---------- Impact framework ---------- */
+
+.lat-logic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+
+@media (max-width: 60rem) {
+  .lat-logic { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  .lat-logic { grid-template-columns: 1fr; }
+}
+
+.lat-logic > div {
+  background: var(--ground-2);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.lat-logic h3 {
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--steel);
+  margin-bottom: var(--s-3);
+}
+
+.lat-logic ul {
+  margin: 0;
+  padding-left: 1.1em;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.lat-logic li {
+  margin-bottom: var(--s-2);
+}
+
+/* Filters */
+.lat-filters {
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin: var(--s-6) 0 var(--s-4);
+}
+
+.lat-filters button {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+}
+
+.lat-filters button.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--ground);
+}
+
+/* Indicator cards */
+.lat-indicators {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+}
+
+@media (max-width: 60rem) {
+  .lat-indicators { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  .lat-indicators { grid-template-columns: 1fr; }
+}
+
+.lat-indicator {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.lat-indicator strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  display: block;
+  color: var(--accent-ink);
+  line-height: 1.1;
+  margin-bottom: var(--s-2);
+}
+
+.lat-indicator p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0 0 var(--s-3);
+}
+
+.lat-indicator .lat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--steel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+/* ---------- Funder CTA ---------- */
+
+.lat-cta {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .lat-cta { grid-template-columns: 1fr; }
+}
+
+.lat-cta__paths {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lat-cta__paths li {
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--deep-ink) 18%, transparent);
+  font-size: var(--fs-sm);
+  color: var(--deep-ink-2);
+}
+
+.lat-cta__paths li:last-child {
+  border-bottom: none;
+}
+
+.lat-cta__paths strong {
+  color: var(--deep-ink);
+  display: block;
+  margin-bottom: 2px;
+}

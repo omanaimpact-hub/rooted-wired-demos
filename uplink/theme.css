@@ -1,0 +1,349 @@
+/* ============================================================
+   Uplink Youth — theme
+   Future-forward · civic · credible to parents and funders
+   Space Grotesk (display) + Inter (body)
+   ============================================================ */
+
+:root {
+  --ground: #F5F4EF;
+  --ground-2: #EBEAE0;
+  --panel: #FFFFFF;
+  --ink: #171C33;
+  --ink-2: #4A5068;
+  --accent: #3148C8;
+  --accent-ink: #2438A8;
+  --accent-soft: #DDE1F5;
+  --deep: #171C33;
+  --deep-ink: #F5F4EF;
+  --deep-ink-2: #9FA6C4;
+  --line: #DDDCD0;
+  --amber: #F2A93B;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+}
+
+h1, h2 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* ---------- Hero ---------- */
+
+.up-hero {
+  background: var(--deep);
+  color: var(--deep-ink);
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.up-hero__inner {
+  max-width: 44rem;
+  position: relative;
+  z-index: 1;
+}
+
+.up-hero .eyebrow {
+  color: var(--amber);
+}
+
+.up-hero h1 {
+  color: var(--deep-ink);
+  margin-bottom: var(--s-5);
+}
+
+.up-hero .lede {
+  color: var(--deep-ink-2);
+  margin-bottom: var(--s-6);
+}
+
+.up-hero__grid {
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(320px, 36vw, 560px);
+  opacity: 0.95;
+  pointer-events: none;
+  animation: up-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes up-drift {
+  from { transform: translateY(-52%); }
+  to { transform: translateY(-48%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .up-hero__grid { animation: none; transform: translateY(-50%); }
+}
+
+@media (max-width: 62rem) {
+  .up-hero__grid { display: none; }
+}
+
+/* ---------- Belief lines ---------- */
+
+.up-beliefs {
+  display: grid;
+  gap: var(--s-5);
+  max-width: 46rem;
+}
+
+.up-beliefs p {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+  padding-left: var(--s-5);
+  border-left: 4px solid var(--accent);
+}
+
+.up-beliefs p:nth-child(2) {
+  border-left-color: var(--amber);
+}
+
+/* ---------- Pathways ---------- */
+
+.up-path {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 2vw, 2.25rem);
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.up-path:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--amber);
+}
+
+.up-path__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  display: block;
+  margin-bottom: var(--s-4);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.up-path:hover .up-path__num {
+  color: var(--amber);
+}
+
+.up-path h3 {
+  margin-bottom: var(--s-2);
+}
+
+.up-path p {
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+}
+
+.up-path__meta {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  display: grid;
+  gap: var(--s-1);
+}
+
+.up-path__meta strong {
+  color: var(--ink);
+}
+
+/* ---------- Outcomes ---------- */
+
+.up-outcome {
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.up-outcome h3 {
+  font-size: var(--fs-md);
+  margin-bottom: var(--s-2);
+}
+
+.up-outcome p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.up-outcome__mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: var(--s-3);
+}
+
+/* ---------- Parent trust ---------- */
+
+.up-trust {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .up-trust { grid-template-columns: 1fr; }
+}
+
+.up-trust__pledge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+  margin-top: var(--s-5);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.up-trust__pledge strong {
+  color: var(--ink);
+  display: block;
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-base);
+}
+
+/* ---------- Partners ---------- */
+
+.up-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+@media (max-width: 56rem) {
+  .up-logos { grid-template-columns: repeat(2, 1fr); }
+}
+
+.up-logos span {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--s-4);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+  min-height: 4.2rem;
+}
+
+/* ---------- Dual CTA ---------- */
+
+.up-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@media (max-width: 52rem) {
+  .up-dual { grid-template-columns: 1fr; }
+}
+
+.up-dual__panel {
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.up-dual__panel--students {
+  background: var(--deep);
+  color: var(--deep-ink);
+}
+
+.up-dual__panel--students h3 {
+  color: var(--deep-ink);
+  font-size: var(--fs-xl);
+}
+
+.up-dual__panel--students p {
+  color: var(--deep-ink-2);
+}
+
+.up-dual__panel--adults {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.up-dual__panel--adults h3 {
+  font-size: var(--fs-xl);
+}
+
+.up-dual__anchor {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--amber);
+  display: block;
+  margin: var(--s-4) 0;
+}
+
+.up-dual__panel--adults .up-dual__anchor {
+  color: var(--accent-ink);
+}
+
+/* ---------- Interest form tabs ---------- */
+
+.up-tabs {
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-5);
+}
+
+.up-tabs [role="tab"] {
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+}
+
+.up-tabs [role="tab"][aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.up-form-panel {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin-bottom: var(--s-5);
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  padding: var(--s-4) var(--s-5);
+}

@@ -1,0 +1,368 @@
+/* ============================================================
+   Rooted & Wired — hub theme + bespoke styles
+   Palette: Soft Sand / Deep Slate / Deep Moss / Warm Taupe / Muted Clay
+   Type: Newsreader (display) + Public Sans (body)
+   ============================================================ */
+
+:root {
+  --ground: #fafcfb;
+  --ground-2: #eef0ec;
+  --panel: #ffffff;
+  --ink: #5f5f5f;
+  --ink-2: #8a8a87;
+  --accent: #879571;
+  --accent-ink: #ad3f3d;
+  --accent-soft: #e8ede2;
+  --deep: #3a3832;
+  --deep-ink: #fafcfb;
+  --deep-ink-2: #b8bdb5;
+  --line: #dde0da;
+  --moss: #879571;
+  --taupe: #d1c4b7;
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 3px;
+  --radius: 6px;
+  --radius-lg: 10px;
+}
+
+h1, h2 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- Hub header logo ---------- */
+
+.hub-brand {
+  line-height: 1;
+  padding: 0;
+}
+
+.hub-brand img {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+/* ---------- Hero ---------- */
+
+.hub-hero {
+  position: relative;
+  padding-block: clamp(4.5rem, 9vw, 8.5rem) clamp(3.5rem, 7vw, 6.5rem);
+  overflow: hidden;
+}
+
+.hub-hero__inner {
+  max-width: 52rem;
+  position: relative;
+}
+
+.hub-hero h1 {
+  margin-bottom: var(--s-5);
+}
+
+.hub-hero .support-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-lg);
+  color: var(--moss);
+  margin-bottom: var(--s-5);
+}
+
+.hub-hero .lede {
+  max-width: 38rem;
+  margin-bottom: var(--s-6);
+}
+
+/* ---------- Signal thread (identity motif) ---------- */
+
+.thread {
+  position: absolute;
+  left: calc(50% + 36rem);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent) 8%,
+    var(--accent) 70%,
+    var(--taupe) 100%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (max-width: 78rem) {
+  .thread { display: none; }
+}
+
+.thread::before,
+.thread::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.thread::before { top: 18%; }
+.thread::after { top: 62%; background: var(--moss); }
+
+/* Decorative arcs in hero corner */
+.hero-arcs {
+  position: absolute;
+  right: calc(var(--gutter) * -1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(220px, 26vw, 380px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+@media (max-width: 62rem) {
+  .hero-arcs { display: none; }
+}
+
+.hub-hero .container {
+  position: relative;
+}
+
+/* ---------- Fiction disclosure ---------- */
+
+.fiction-note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: var(--s-6);
+}
+
+.fiction-note::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---------- Concept cards ---------- */
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.concept-card {
+  grid-column: span 2;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.concept-card__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.concept-card:nth-child(1),
+.concept-card:nth-child(2) {
+  grid-column: span 3;
+}
+
+@media (max-width: 60rem) {
+  .concept-card,
+  .concept-card:nth-child(1),
+  .concept-card:nth-child(2) {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 40rem) {
+  .concept-card,
+  .concept-card:nth-child(1),
+  .concept-card:nth-child(2) {
+    grid-column: span 6;
+  }
+}
+
+.concept-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.concept-card__art {
+  aspect-ratio: 16 / 8;
+  display: grid;
+  place-items: center;
+  border-bottom: 3px solid var(--cc-accent, var(--accent));
+  background: var(--cc-bg, var(--ground-2));
+}
+
+.concept-card__art svg {
+  width: 46%;
+  max-width: 190px;
+}
+
+.concept-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  align-self: stretch;
+  justify-self: stretch;
+}
+
+.concept-card__body {
+  padding: var(--s-5) var(--s-5) var(--s-4);
+  flex: 1;
+}
+
+.concept-card__body .chip {
+  margin-bottom: var(--s-3);
+  background: var(--ground-2);
+  color: var(--ink-2);
+}
+
+.concept-card h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--s-2);
+}
+
+.concept-card p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.concept-card__links {
+  display: flex;
+  gap: var(--s-5);
+  padding: var(--s-3) var(--s-5) var(--s-5);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.concept-card__links a {
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.concept-card__links a + a {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.concept-card__links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Pillars ---------- */
+
+.pillar {
+  border-top: 2px solid var(--moss);
+  padding-top: var(--s-4);
+}
+
+.pillar h3 {
+  font-size: var(--fs-md);
+  margin-bottom: var(--s-2);
+}
+
+.pillar p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* ---------- Why infrastructure ---------- */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+.why-grid .takeaway {
+  border-left-color: var(--moss);
+  margin-bottom: var(--s-6);
+}
+
+.why-grid .takeaway:last-child {
+  margin-bottom: 0;
+}
+
+blockquote.pull {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-xl);
+  line-height: 1.35;
+  color: var(--moss);
+  border-left: 3px solid var(--accent);
+  margin: var(--s-6) 0 0;
+  padding-left: var(--s-5);
+}
+
+/* ---------- Connect band ---------- */
+
+.connect-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .connect-band { grid-template-columns: 1fr; }
+}
+
+.section--deep .form-field input {
+  background: color-mix(in srgb, var(--deep-ink) 8%, var(--deep));
+  border-color: color-mix(in srgb, var(--deep-ink) 25%, var(--deep));
+  color: var(--deep-ink);
+}
+
+.section--deep .form-field input::placeholder {
+  color: var(--deep-ink-2);
+}
+
+.section--deep .form-field label {
+  color: var(--deep-ink);
+}
+
+.section--deep .form-note {
+  color: var(--deep-ink-2);
+}
+
+.section--deep .form-success {
+  background: color-mix(in srgb, var(--deep-ink) 10%, var(--deep));
+  border-color: var(--accent);
+  color: var(--deep-ink);
+}
