@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Rooted &amp; Wired</title>
+<link rel="icon" href="/shared/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ground: #FAF7F2;
+    --ink: #3A3F45;
+    --sage: #879571;
+    --brick: #C54C4A;
+    --mid: #6B7280;
+    --taupe: #D1C4B7;
+  }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  .mark {
+    margin-bottom: 2rem;
+  }
+  .mark svg { width: 48px; height: 48px; }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(4rem, 12vw, 7rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .sub {
+    font-size: 1.2rem;
+    color: var(--mid);
+    max-width: 36ch;
+    margin: 0 auto 2.5rem;
+    line-height: 1.5;
+  }
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--taupe);
+    margin: 0 auto 2.5rem;
+  }
+  .back-home {
+    display: inline-block;
+    background: var(--sage);
+    color: #fff;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: 2.5rem;
+    transition: background 0.2s;
+  }
+  .back-home:hover { background: #6b7860; }
+  .sites-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1rem;
+  }
+  .site-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    max-width: 480px;
+  }
+  .site-links a {
+    font-size: 0.85rem;
+    color: var(--sage);
+    text-decoration: none;
+    border: 1px solid var(--taupe);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .site-links a:hover { border-color: var(--sage); color: var(--ink); }
+  footer {
+    margin-top: 4rem;
+    font-size: 0.75rem;
+    color: var(--mid);
+  }
+</style>
+</head>
+<body>
+
+  <div class="mark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="8" fill="#FAF7F2"/>
+      <path d="M 6 39 Q 24 6 42 39" fill="none" stroke="#879571" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 12 39 Q 24 15 36 39" fill="none" stroke="#879571" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 18 39 Q 24 24 30 39" fill="none" stroke="#879571" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="24" cy="39" r="3.5" fill="#C54C4A"/>
+    </svg>
+  </div>
+
+  <p class="eyebrow">Rooted &amp; Wired</p>
+  <h1>404</h1>
+  <p class="sub">This page doesn't exist — but the infrastructure does. Head back and explore the collection.</p>
+  <div class="divider"></div>
+
+  <a class="back-home" href="/">Back to the Hub</a>
+
+  <p class="sites-label">Or go directly to a concept site</p>
+  <div class="site-links">
+    <a href="/marigold/">Marigold Health Navigators</a>
+    <a href="/uplink/">Uplink Youth</a>
+    <a href="/junction-house/">Junction House</a>
+    <a href="/porchlight/">Porch Light Collective</a>
+    <a href="/lattice/">The Lattice Coalition</a>
+  </div>
+
+  <footer>Built as a Rooted &amp; Wired digital infrastructure concept.</footer>
+
+</body>
+</html>

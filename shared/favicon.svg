@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#FAF7F2"/>
+  <!-- Signal arcs — "wired" -->
+  <path d="M 4 26 Q 16 4 28 26" fill="none" stroke="#879571" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M 8 26 Q 16 10 24 26" fill="none" stroke="#879571" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M 12 26 Q 16 16 20 26" fill="none" stroke="#879571" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Root dot — "rooted" -->
+  <circle cx="16" cy="26" r="2.4" fill="#C54C4A"/>
+</svg>
