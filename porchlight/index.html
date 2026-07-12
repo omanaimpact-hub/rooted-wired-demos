@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="../shared/claim.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>
 <body id="top">
@@ -33,13 +34,14 @@
     <span class="demo-strip__links">
       <a href="../index.html">◂ All concepts</a>
       <a href="guide.html">Design guide</a>
+      <a href="#" data-claim-open>Make this yours</a>
     </span>
   </div>
 </div>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="#top">Porch Light<small>Collective</small></a>
+    <a class="brand" href="#top"><span data-org-name>Porch Light<small>Collective</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <a href="#story">Our Story</a>
@@ -65,7 +67,7 @@
     </svg>
     <div class="container">
       <div class="pl-hero__inner">
-        <span class="eyebrow" data-reveal>A neighborhood collective, now a nonprofit</span>
+        <span class="eyebrow" data-reveal data-org-tagline>A neighborhood collective, now a nonprofit</span>
         <h1 data-reveal>The care was always here. Now it's built to last.</h1>
         <p class="lede" data-reveal>Porch Light Collective grew out of five years of neighbors feeding, driving, and showing up for each other. We've become a nonprofit for one reason: so the care our blocks depend on doesn't depend on luck.</p>
         <div class="btn-row" data-reveal>
@@ -315,7 +317,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <p class="footer-brand">Porch Light Collective</p>
+        <p class="footer-brand" data-org-name>Porch Light Collective</p>
         <p>Neighbors caring for neighbors — with structure built to last.<br>A fictional community care organization, imagined for this demonstration.</p>
       </div>
       <div>
@@ -343,5 +345,6 @@
 </footer>
 
 <script src="../shared/site.js"></script>
+<script src="../shared/claim.js" defer data-site="porchlight" data-site-label="Porch Light Collective" data-claim-url="../claim.html"></script>
 </body>
 </html>

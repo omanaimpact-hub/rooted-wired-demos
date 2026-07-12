@@ -1,0 +1,267 @@
+/* ============================================================
+   "Make It Yours" personalizer — shared across all demo sites
+   Consumes each site's own theme tokens so the panel feels native.
+   ============================================================ */
+
+.claim-fab {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--deep-ink, #fff);
+  background: var(--deep, #333);
+  padding: 0.7rem 1.2rem;
+  border-radius: 100px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.claim-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.claim-fab__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent, #c54c4a);
+  flex: none;
+}
+
+/* ---------- Panel ---------- */
+
+.claim-panel {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 4.6rem;
+  z-index: 95;
+  width: min(21rem, calc(100vw - 2.2rem));
+  background: var(--panel, var(--ground, #fff));
+  color: var(--ink, #222);
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+  padding: 1.25rem 1.25rem 1.1rem;
+  font-family: var(--font-body, sans-serif);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.claim-panel.is-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.claim-panel h3 {
+  font-family: var(--font-display, serif);
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem;
+  color: var(--ink, #222);
+}
+
+.claim-panel__sub {
+  font-size: 0.8rem;
+  color: var(--ink-2, #666);
+  margin: 0 0 0.9rem;
+  line-height: 1.45;
+}
+
+.claim-panel__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--ink-2, #666);
+  padding: 0.25rem;
+}
+
+.claim-field {
+  margin-bottom: 0.7rem;
+}
+
+.claim-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2, #666);
+  margin-bottom: 0.25rem;
+}
+
+.claim-field input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink, #222);
+  background: var(--ground, #fff);
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.15));
+  border-radius: var(--radius-sm, 6px);
+  padding: 0.55rem 0.65rem;
+}
+
+.claim-field input[type="text"]:focus-visible {
+  outline: 2px solid var(--accent, #c54c4a);
+  outline-offset: 1px;
+}
+
+.claim-colors {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.claim-colors .claim-field {
+  flex: 1;
+}
+
+.claim-field input[type="color"] {
+  width: 100%;
+  height: 2.2rem;
+  padding: 2px;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.15));
+  border-radius: var(--radius-sm, 6px);
+  background: var(--ground, #fff);
+  cursor: pointer;
+}
+
+.claim-panel__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.claim-btn {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm, 6px);
+  transition: filter 0.15s ease;
+}
+
+.claim-btn--apply {
+  background: var(--accent, #c54c4a);
+  color: #fff;
+}
+
+.claim-btn--apply:hover { filter: brightness(0.92); }
+
+.claim-btn--reset {
+  background: transparent;
+  color: var(--ink-2, #666);
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.2));
+}
+
+.claim-panel__note {
+  font-size: 0.7rem;
+  color: var(--ink-2, #888);
+  margin: 0.7rem 0 0;
+  line-height: 1.4;
+}
+
+/* ---------- Post-personalization claim bar ---------- */
+
+.claim-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 110%);
+  z-index: 92;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: min(44rem, calc(100vw - 1.5rem));
+  background: var(--deep, #2c2c2c);
+  color: var(--deep-ink, #fff);
+  border-radius: 14px 14px 0 0;
+  padding: 0.85rem 1.4rem;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-body, sans-serif);
+  transition: transform 0.35s ease;
+}
+
+.claim-bar.is-visible {
+  transform: translate(-50%, 0);
+}
+
+.claim-bar p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.claim-bar p strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.claim-bar__cta {
+  flex: none;
+  display: inline-block;
+  background: var(--accent, #c54c4a);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.claim-bar__cta:hover { filter: brightness(0.92); }
+
+.claim-bar__dismiss {
+  border: none;
+  background: none;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 40rem) {
+  .claim-panel {
+    right: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+  }
+  .claim-bar {
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .claim-fab,
+  .claim-panel,
+  .claim-bar {
+    transition: none;
+  }
+}

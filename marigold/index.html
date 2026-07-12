@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="../shared/claim.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>
 <body id="top">
@@ -33,13 +34,14 @@
     <span class="demo-strip__links">
       <a href="../index.html">◂ All concepts</a>
       <a href="guide.html">Design guide</a>
+      <a href="#" data-claim-open>Make this yours</a>
     </span>
   </div>
 </div>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="#top">Marigold<small>Health Navigators</small></a>
+    <a class="brand" href="#top"><span data-org-name>Marigold<small>Health Navigators</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <a href="#story">Our Story</a>
@@ -58,7 +60,7 @@
   <section class="mg-hero">
     <div class="container">
       <div>
-        <span class="eyebrow" data-reveal>Survivor-led · Community-based</span>
+        <span class="eyebrow" data-reveal data-org-tagline>Survivor-led · Community-based</span>
         <h1 data-reveal>No one should face a late diagnosis because no one was looking.</h1>
         <p class="lede" data-reveal>Marigold Health Navigators brings early detection education, screening access, and one-on-one patient navigation to communities the health system too often overlooks.</p>
         <div class="btn-row" data-reveal>
@@ -305,7 +307,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <p class="footer-brand">Marigold Health Navigators</p>
+        <p class="footer-brand" data-org-name>Marigold Health Navigators</p>
         <p>Early detection saves lives. Navigation makes it possible.<br>A fictional survivor-led organization, imagined for this demonstration.</p>
       </div>
       <div>
@@ -333,5 +335,6 @@
 </footer>
 
 <script src="../shared/site.js"></script>
+<script src="../shared/claim.js" defer data-site="marigold" data-site-label="Marigold Health Navigators" data-claim-url="../claim.html"></script>
 </body>
 </html>

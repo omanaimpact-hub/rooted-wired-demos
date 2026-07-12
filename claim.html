@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim a Website — Rooted &amp; Wired</title>
+<meta name="description" content="Claim one of five professionally designed nonprofit websites. Customized with your organization's name, colors, and content — live on your domain in about 7 days. Starting at $1,500.">
+<link rel="icon" href="/shared/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rooted-wired-demos.netlify.app/claim.html">
+<meta property="og:site_name" content="Rooted &amp; Wired">
+<meta property="og:title" content="Claim a Website — Make one of these sites your organization's home">
+<meta property="og:description" content="Five funder-ready nonprofit website designs, customized for your organization and live on your domain in about 7 days. Starting at $1,500.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claim a Website — Make one of these sites your organization's home">
+<meta name="twitter:description" content="Five funder-ready nonprofit website designs, customized for your organization and live on your domain in about 7 days. Starting at $1,500.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=630&q=80">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="hub.css">
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+<style>
+  /* ---------- Claim-page specific ---------- */
+  .claim-hero { padding-block: clamp(3rem, 6vw, 5.5rem); }
+  .claim-hero .lede { max-width: 46rem; }
+  .claim-hero__promise {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: var(--s-5); font-size: var(--fs-sm); font-weight: 600;
+    color: var(--accent-ink, #5F6F63);
+  }
+  .claim-hero__promise::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: #879571; flex: none;
+  }
+
+  .claim-steps { counter-reset: step; }
+  .claim-step { position: relative; padding-top: var(--s-6); }
+  .claim-step::before {
+    counter-increment: step; content: "0" counter(step);
+    position: absolute; top: 0; left: 0;
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+    color: #C54C4A;
+  }
+  .claim-step h3 { margin-bottom: var(--s-2); }
+
+  .picker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  @media (max-width: 60rem) { .picker-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 40rem) { .picker-grid { grid-template-columns: 1fr; } }
+  .picker-card {
+    background: var(--panel, #fff); border: 2px solid var(--line, #E5E0D8);
+    border-radius: var(--radius-lg, 14px); overflow: hidden; cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: left; padding: 0; font: inherit; color: inherit; display: block; width: 100%;
+  }
+  .picker-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+  .picker-card.is-selected { border-color: #879571; box-shadow: 0 0 0 3px rgba(135,149,113,0.25); }
+  .picker-card img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; }
+  .picker-card__body { padding: var(--s-4) var(--s-5) var(--s-5); }
+  .picker-card__body h3 { font-size: var(--fs-md); margin-bottom: var(--s-1); }
+  .picker-card__body p { font-size: var(--fs-sm); color: var(--ink-2, #6b6b6b); margin: 0 0 var(--s-3); }
+  .picker-card__state {
+    display: inline-block; font-size: var(--fs-xs); font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #879571;
+  }
+  .picker-card.is-selected .picker-card__state::before { content: "✓ "; }
+  .picker-card:not(.is-selected) .picker-card__state { color: var(--ink-2, #888); }
+
+  .price-panel {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 4vw, 4rem);
+    background: var(--panel, #fff); border: 1px solid var(--line, #E5E0D8);
+    border-radius: var(--radius-lg, 16px); padding: clamp(1.75rem, 4vw, 3rem);
+  }
+  @media (max-width: 55rem) { .price-panel { grid-template-columns: 1fr; } }
+  .price-figure {
+    font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 3.6rem);
+    font-weight: 600; line-height: 1; color: var(--ink);
+  }
+  .price-figure small {
+    display: block; font-family: var(--font-body); font-size: var(--fs-sm);
+    font-weight: 600; color: var(--ink-2, #6b6b6b); margin-bottom: var(--s-2);
+  }
+  .price-includes { list-style: none; padding: 0; margin: var(--s-5) 0 0; }
+  .price-includes li {
+    position: relative; padding-left: 1.5rem; margin-bottom: var(--s-3);
+    font-size: var(--fs-sm); line-height: 1.5;
+  }
+  .price-includes li::before {
+    content: "✓"; position: absolute; left: 0; color: #879571; font-weight: 700;
+  }
+  .deposit-box {
+    background: var(--ground-2, #F2EFE9); border-radius: var(--radius, 10px);
+    padding: var(--s-6); align-self: start;
+  }
+  .deposit-box h3 { margin-bottom: var(--s-2); }
+  .deposit-box > p { font-size: var(--fs-sm); color: var(--ink-2); margin-bottom: var(--s-5); }
+  .deposit-box .deposit-design {
+    font-size: var(--fs-sm); font-weight: 700; margin-bottom: var(--s-4);
+    padding: var(--s-3) var(--s-4); background: var(--panel, #fff);
+    border-radius: var(--radius-sm, 6px); border: 1px solid var(--line, #E5E0D8);
+  }
+  .deposit-fallback {
+    font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2);
+    background: var(--panel, #fff); border: 1px dashed var(--line, #cbc5ba);
+    border-radius: var(--radius-sm, 8px); padding: var(--s-4);
+  }
+  .deposit-success {
+    background: #EAF1E4; border: 1px solid #879571; border-radius: var(--radius-sm, 8px);
+    padding: var(--s-4); font-size: var(--fs-sm); line-height: 1.55;
+  }
+  .care-line { margin-top: var(--s-5); font-size: var(--fs-xs); color: var(--ink-2); }
+
+  .mission-band { text-align: center; }
+  .mission-band p {
+    font-family: var(--font-display); font-size: var(--fs-lg); font-style: italic;
+    max-width: 42rem; margin-inline: auto; color: var(--deep-ink, #fafcfb);
+  }
+
+  .claim-faq details {
+    border-bottom: 1px solid var(--line, #E5E0D8); padding: var(--s-4) 0;
+  }
+  .claim-faq summary {
+    font-weight: 700; cursor: pointer; font-size: var(--fs-sm); list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  .claim-faq summary::after { content: "+"; font-size: 1.3rem; color: #879571; flex: none; }
+  .claim-faq details[open] summary::after { content: "–"; }
+  .claim-faq details p { margin: var(--s-3) 0 0; font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.6; }
+
+  .fine-print { font-size: var(--fs-xs); color: var(--ink-2); max-width: 52rem; }
+
+  .inquiry-success {
+    background: #EAF1E4; border: 1px solid #879571; border-radius: var(--radius, 10px);
+    padding: var(--s-5); margin-bottom: var(--s-6); font-size: var(--fs-sm);
+  }
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand hub-brand" href="index.html"><img src="shared/rw-logo.png" alt="Rooted &amp; Wired"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#concepts">The Designs</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary btn--sm" href="#inquiry">Start Your Claim</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="section claim-hero">
+    <div class="container">
+      <span class="eyebrow" data-reveal>For Nonprofit Founders &amp; Community Organizations</span>
+      <h1 data-reveal>Claim one of these websites.<br>Make it your organization's home.</h1>
+      <p class="lede" data-reveal>Every design in this collection is a complete, working, funder-ready website. Pick the one that fits your mission — we customize it with your name, your colors, your photos, and your story, then launch it on your own domain.</p>
+      <div class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#designs">Pick Your Design</a>
+        <a class="btn btn--secondary" href="#pricing">See Pricing</a>
+      </div>
+      <span class="claim-hero__promise" data-reveal>Live on your domain in about 7 days</span>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section section--alt" id="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>How It Works</span>
+        <h2 data-reveal>Three steps. About a week.</h2>
+      </div>
+      <div class="grid grid--3 claim-steps" data-reveal-stagger>
+        <div class="claim-step" data-reveal>
+          <h3>Pick a design</h3>
+          <p>Choose the site that fits your mission. Use the "Make this site yours" button on any demo to preview it with your own name and colors first.</p>
+        </div>
+        <div class="claim-step" data-reveal>
+          <h3>We make it yours</h3>
+          <p>Send us your content — mission, programs, photos, contact details. We swap everything in, match your brand colors and fonts, and wire up working forms.</p>
+        </div>
+        <div class="claim-step" data-reveal>
+          <h3>You launch</h3>
+          <p>We deploy to your own domain with hosting set up and hand you the keys. You own everything — the site, the domain, the accounts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEMPLATE PICKER ============ -->
+  <section class="section" id="designs">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>The Designs</span>
+        <h2 data-reveal>Five designs. Five voices. Yours to claim.</h2>
+        <p class="lede" data-reveal>Each was designed for a different kind of mission — health, youth, reentry, mutual aid, coalitions — but every one can be reshaped around your organization's work.</p>
+      </div>
+      <div class="picker-grid" data-reveal-stagger>
+        <button type="button" class="picker-card" data-design="marigold" data-label="The Marigold design" data-reveal>
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=300&q=80" alt="The Marigold design — warm editorial style for health and human services" loading="lazy">
+          <div class="picker-card__body">
+            <h3>The Marigold</h3>
+            <p>Warm, editorial, human. Built for health, navigation, and survivor-led missions.</p>
+            <span class="picker-card__state">Select this design</span>
+          </div>
+        </button>
+        <button type="button" class="picker-card" data-design="uplink" data-label="The Uplink design" data-reveal>
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&h=300&q=80" alt="The Uplink design — bold civic-modern style for youth and education programs" loading="lazy">
+          <div class="picker-card__body">
+            <h3>The Uplink</h3>
+            <p>Bold, energetic, credible to parents and funders. Built for youth and education programs.</p>
+            <span class="picker-card__state">Select this design</span>
+          </div>
+        </button>
+        <button type="button" class="picker-card" data-design="junction-house" data-label="The Junction House design" data-reveal>
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&h=300&q=80" alt="The Junction House design — calm, dignified style for family services" loading="lazy">
+          <div class="picker-card__body">
+            <h3>The Junction House</h3>
+            <p>Calm, grounded, dignified. Built for reentry, family stability, and human services.</p>
+            <span class="picker-card__state">Select this design</span>
+          </div>
+        </button>
+        <button type="button" class="picker-card" data-design="porchlight" data-label="The Porch Light design" data-reveal>
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&h=300&q=80" alt="The Porch Light design — warm neighborly style for mutual aid and community care" loading="lazy">
+          <div class="picker-card__body">
+            <h3>The Porch Light</h3>
+            <p>Warm, neighborly, hand-touched. Built for mutual aid and grassroots community care.</p>
+            <span class="picker-card__state">Select this design</span>
+          </div>
+        </button>
+        <button type="button" class="picker-card" data-design="lattice" data-label="The Lattice design" data-reveal>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&h=300&q=80" alt="The Lattice design — precise institutional style for coalitions and intermediaries" loading="lazy">
+          <div class="picker-card__body">
+            <h3>The Lattice</h3>
+            <p>Precise, institutional, report-grade. Built for coalitions, collaboratives, and intermediaries.</p>
+            <span class="picker-card__state">Select this design</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section class="section section--alt" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>Pricing</span>
+        <h2 data-reveal>One honest price. Everything included.</h2>
+      </div>
+      <div class="price-panel" data-reveal>
+        <div>
+          <p class="price-figure"><small>Full customization</small>Starting at $1,500</p>
+          <ul class="price-includes">
+            <li>Your organization's name, mission, programs, and story — professionally placed throughout</li>
+            <li>Your brand colors and fonts across every component</li>
+            <li>Your photos (or help selecting licensed photography)</li>
+            <li>Working contact and interest forms that email you directly</li>
+            <li>Deployed to your own domain with hosting configured — you own it all</li>
+            <li>Two revision rounds included</li>
+          </ul>
+          <p class="care-line">Want it maintained for you? Ask about the care plan — updates, hosting, and monthly changes from $150/month.</p>
+        </div>
+        <div class="deposit-box">
+          <h3>Reserve your build slot</h3>
+          <p>A <strong>$500 deposit</strong> claims your design and locks your place in the build queue. The balance is due when your site goes live.</p>
+          <p class="deposit-design">Selected design: <span id="deposit-design-label">Choose one above</span></p>
+          <div id="paypal-buttons"></div>
+          <div class="deposit-fallback" id="deposit-fallback">
+            Secure checkout is being finalized. Use the inquiry form below to claim your design today — we'll reply within one business day with a secure payment link and next steps.
+          </div>
+          <div class="deposit-success" id="deposit-success" hidden>
+            <strong>Deposit received — your build slot is reserved.</strong><br>
+            We'll email you within one business day to gather your content and get started. Thank you!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSION NOTE ============ -->
+  <section class="section section--tight section--deep">
+    <div class="container mission-band">
+      <p data-reveal>"A portion of every sale funds Rooted &amp; Wired's free infrastructure work for grassroots founders. When you claim a site, you're helping another founder get started."</p>
+    </div>
+  </section>
+
+  <!-- ============ INQUIRY FORM ============ -->
+  <section class="section" id="inquiry">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>Start Your Claim</span>
+        <h2 data-reveal>Tell us about your organization</h2>
+        <p class="lede" data-reveal>Prefer to talk before paying anything? Send this and we'll reply within one business day.</p>
+      </div>
+      <div class="inquiry-success" id="inquiry-success" hidden>
+        <strong>Got it — thank you!</strong> Your inquiry is in. We'll reply within one business day from hello@rootedwiredimpact.org.
+      </div>
+      <form name="claim-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="claim-form" data-reveal>
+        <input type="hidden" name="form-name" value="claim-inquiry">
+        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-body">
+          <div class="form-field">
+            <label for="ci-name">Your name</label>
+            <input type="text" id="ci-name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="ci-email">Email</label>
+            <input type="email" id="ci-email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="ci-org">Organization name</label>
+            <input type="text" id="ci-org" name="organization" required>
+          </div>
+          <div class="form-field">
+            <label for="ci-design">Which design?</label>
+            <select id="ci-design" name="design" required>
+              <option value="">Choose a design…</option>
+              <option value="marigold">The Marigold — health &amp; navigation</option>
+              <option value="uplink">The Uplink — youth &amp; education</option>
+              <option value="junction-house">The Junction House — reentry &amp; family services</option>
+              <option value="porchlight">The Porch Light — mutual aid &amp; community care</option>
+              <option value="lattice">The Lattice — coalitions &amp; collaboratives</option>
+              <option value="unsure">Not sure yet — help me choose</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="ci-website">Current website, if any (optional)</label>
+            <input type="text" id="ci-website" name="current-website" placeholder="yourorg.org">
+          </div>
+          <div class="form-field">
+            <label for="ci-notes">Anything we should know? (optional)</label>
+            <textarea id="ci-notes" name="notes" rows="4" placeholder="Your mission, timeline, questions…"></textarea>
+          </div>
+          <div class="btn-row" style="margin-top: var(--s-4);">
+            <button class="btn btn--primary" type="submit">Send My Claim Inquiry</button>
+          </div>
+          <p class="form-note">We reply within one business day. No spam, no mailing list — just a real conversation about your site.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section--alt" id="faq">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>Questions</span>
+        <h2 data-reveal>Fair questions, straight answers</h2>
+      </div>
+      <div class="claim-faq" data-reveal>
+        <details>
+          <summary>How fast is "about 7 days," really?</summary>
+          <p>Seven business days from the day we receive your final content — your text, photos, and domain access. If content arrives in pieces, the clock starts when the last piece lands. Rush timelines are sometimes possible; ask.</p>
+        </details>
+        <details>
+          <summary>What counts as a revision round?</summary>
+          <p>One consolidated list of changes after you review the customized site. Two rounds are included; most organizations only need one. Additional rounds are $150 each.</p>
+        </details>
+        <details>
+          <summary>Do I own the website and domain?</summary>
+          <p>Yes — completely. The domain is registered in your name, the hosting account is yours, and the code is handed over at launch. No lock-in: if you leave the care plan, everything stays with you.</p>
+        </details>
+        <details>
+          <summary>What happens to the demo content on the site I claim?</summary>
+          <p>Every word of the fictional organization's content is replaced with yours. The demo stays in our collection as a design showcase — your site is a fresh copy that becomes fully your own.</p>
+        </details>
+        <details>
+          <summary>What if I don't have my content ready?</summary>
+          <p>That's common — and it's what Rooted &amp; Wired is for. We can help you develop mission language, program descriptions, and funder-ready framing as an add-on. Mention it in your inquiry.</p>
+        </details>
+        <details>
+          <summary>Who is OMANA?</summary>
+          <p>OMANA is the small business that fulfills these builds — design, customization, and deployment. Rooted &amp; Wired is the nonprofit initiative it supports: a portion of every sale funds free infrastructure work for grassroots founders.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Rooted &amp; Wired</p>
+        <p>Building Community Bandwidth for Lasting Change.<br>Rooted in community. Wired to make a difference.</p>
+      </div>
+      <div>
+        <h4>The Designs</h4>
+        <ul>
+          <li><a href="marigold/index.html">Marigold Health Navigators</a></li>
+          <li><a href="uplink/index.html">Uplink Youth</a></li>
+          <li><a href="junction-house/index.html">Junction House</a></li>
+          <li><a href="porchlight/index.html">Porch Light Collective</a></li>
+          <li><a href="lattice/index.html">The Lattice Coalition</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rooted &amp; Wired</h4>
+        <ul>
+          <li><a href="index.html">The collection</a></li>
+          <li><a href="index.html#what-we-do">What we do</a></li>
+          <li><a href="mailto:hello@rootedwiredimpact.org">hello@rootedwiredimpact.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p class="fine-print">Sales and fulfillment by OMANA. A portion of proceeds supports Rooted &amp; Wired's work with grassroots nonprofit founders. Purchases are payments for design and development services, not donations. The five demonstration organizations shown in this collection are fictional.</p>
+      <p class="concept-note">Built as a Rooted &amp; Wired digital infrastructure concept.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Hidden Netlify form: records completed PayPal deposits (registered at deploy time) -->
+<form name="deposit-claims" data-netlify="true" hidden>
+  <input type="text" name="organization">
+  <input type="text" name="design">
+  <input type="text" name="payer-email">
+  <input type="text" name="transaction-id">
+  <input type="text" name="amount">
+</form>
+
+<script src="shared/site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     PayPal configuration
+     TODO: paste the OMANA PayPal LIVE CLIENT ID between the quotes
+     (developer.paypal.com → Apps & Credentials → Live → Client ID).
+     Leave empty to show the inquiry-form fallback instead.
+     ============================================================ */
+  var PAYPAL_CLIENT_ID = '';
+  var DEPOSIT_AMOUNT = '500.00';
+
+  var designs = {
+    'marigold': 'The Marigold — health & navigation',
+    'uplink': 'The Uplink — youth & education',
+    'junction-house': 'The Junction House — reentry & family services',
+    'porchlight': 'The Porch Light — mutual aid & community care',
+    'lattice': 'The Lattice — coalitions & collaboratives'
+  };
+  var selectedDesign = '';
+
+  var cards = document.querySelectorAll('.picker-card');
+  var depositLabel = document.getElementById('deposit-design-label');
+  var designSelect = document.getElementById('ci-design');
+
+  function selectDesign(slug) {
+    if (!designs[slug]) return;
+    selectedDesign = slug;
+    cards.forEach(function (c) {
+      c.classList.toggle('is-selected', c.getAttribute('data-design') === slug);
+      var state = c.querySelector('.picker-card__state');
+      state.textContent = c.getAttribute('data-design') === slug ? 'Selected' : 'Select this design';
+    });
+    depositLabel.textContent = designs[slug];
+    if (designSelect) designSelect.value = slug;
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      selectDesign(card.getAttribute('data-design'));
+    });
+  });
+
+  /* ---------- Prefill from URL params (?site= & ?org=) ---------- */
+  var params = new URLSearchParams(window.location.search);
+  var siteParam = params.get('site');
+  var orgParam = params.get('org');
+  if (siteParam && designs[siteParam]) selectDesign(siteParam);
+  if (orgParam) {
+    var orgInput = document.getElementById('ci-org');
+    if (orgInput) orgInput.value = orgParam;
+  }
+
+  /* ---------- Netlify inquiry form (AJAX submit for inline success) ---------- */
+  var form = document.getElementById('claim-form');
+  var successBox = document.getElementById('inquiry-success');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(function (res) {
+        if (res.ok) {
+          form.hidden = true;
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          form.submit(); /* fall back to normal POST */
+        }
+      }).catch(function () { form.submit(); });
+    });
+  }
+
+  /* ---------- PayPal Smart Buttons ---------- */
+  var fallback = document.getElementById('deposit-fallback');
+  var successEl = document.getElementById('deposit-success');
+
+  function recordClaim(details) {
+    var payload = new URLSearchParams({
+      'form-name': 'deposit-claims',
+      'organization': (document.getElementById('ci-org') || {}).value || orgParam || '',
+      'design': selectedDesign || 'not selected',
+      'payer-email': (details.payer && details.payer.email_address) || '',
+      'transaction-id': details.id || '',
+      'amount': DEPOSIT_AMOUNT
+    });
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: payload.toString()
+    }).catch(function () { /* record is best-effort; PayPal email is the source of truth */ });
+  }
+
+  function initPayPal() {
+    if (!window.paypal) return;
+    fallback.hidden = true;
+    window.paypal.Buttons({
+      style: { layout: 'vertical', shape: 'pill', label: 'pay' },
+      createOrder: function (data, actions) {
+        var label = designs[selectedDesign] || 'design to be confirmed';
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: DEPOSIT_AMOUNT, currency_code: 'USD' },
+            description: 'Website Build Deposit — ' + label
+          }]
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          recordClaim(details);
+          document.getElementById('paypal-buttons').hidden = true;
+          successEl.hidden = false;
+        });
+      }
+    }).render('#paypal-buttons');
+  }
+
+  if (PAYPAL_CLIENT_ID) {
+    var s = document.createElement('script');
+    s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(PAYPAL_CLIENT_ID) + '&currency=USD';
+    s.onload = initPayPal;
+    document.head.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>

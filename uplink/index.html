@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="../shared/claim.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>
 <body id="top">
@@ -33,13 +34,14 @@
     <span class="demo-strip__links">
       <a href="../index.html">◂ All concepts</a>
       <a href="guide.html">Design guide</a>
+      <a href="#" data-claim-open>Make this yours</a>
     </span>
   </div>
 </div>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="#top">Uplink<small>Youth</small></a>
+    <a class="brand" href="#top"><span data-org-name>Uplink<small>Youth</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <a href="#mission">Mission</a>
@@ -72,7 +74,7 @@
     </svg>
     <div class="container">
       <div class="up-hero__inner">
-        <span class="eyebrow" data-reveal>Free for students 13–19 · Community-based</span>
+        <span class="eyebrow" data-reveal data-org-tagline>Free for students 13–19 · Community-based</span>
         <h1 data-reveal>Every young person deserves a working connection to the future.</h1>
         <p class="lede" data-reveal>Uplink Youth gives students free access to digital skills, AI literacy, creative technology, and the mentors and career exposure to put them to work — no experience required, no cost, ever.</p>
         <div class="btn-row" data-reveal>
@@ -350,7 +352,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <p class="footer-brand">Uplink Youth</p>
+        <p class="footer-brand" data-org-name>Uplink Youth</p>
         <p>Connecting young people to the skills, tools, and futures they deserve.<br>A fictional youth digital opportunity organization, imagined for this demonstration.</p>
       </div>
       <div>
@@ -378,5 +380,6 @@
 </footer>
 
 <script src="../shared/site.js"></script>
+<script src="../shared/claim.js" defer data-site="uplink" data-site-label="Uplink Youth" data-claim-url="../claim.html"></script>
 </body>
 </html>

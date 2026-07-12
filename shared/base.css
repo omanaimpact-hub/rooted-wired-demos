@@ -133,7 +133,7 @@ ul, ol {
   color: var(--deep-ink-2);
 }
 
-.section--deep a {
+.section--deep a:not(.btn) {
   color: var(--deep-ink);
 }
 

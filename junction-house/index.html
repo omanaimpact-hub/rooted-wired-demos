@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../shared/tokens.css">
 <link rel="stylesheet" href="../shared/base.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="../shared/claim.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>
 <body id="top">
@@ -33,13 +34,14 @@
     <span class="demo-strip__links">
       <a href="../index.html">◂ All concepts</a>
       <a href="guide.html">Design guide</a>
+      <a href="#" data-claim-open>Make this yours</a>
     </span>
   </div>
 </div>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="#top">Junction House<small>Reentry &amp; Family Stability</small></a>
+    <a class="brand" href="#top"><span data-org-name>Junction House<small>Reentry &amp; Family Stability</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <a href="#mission">Mission</a>
@@ -65,7 +67,7 @@
     </svg>
     <div class="container">
       <div class="jh-hero__inner">
-        <span class="eyebrow" data-reveal>Founded on lived experience</span>
+        <span class="eyebrow" data-reveal data-org-tagline>Founded on lived experience</span>
         <h1 data-reveal>Coming home should be a beginning — not another obstacle.</h1>
         <p class="lede" data-reveal>Junction House supports people returning from incarceration — and the families who hold the door open — with practical navigation, job readiness, and steady community, from the first 72 hours through long-term stability.</p>
         <div class="btn-row" data-reveal>
@@ -327,7 +329,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <p class="footer-brand">Junction House</p>
+        <p class="footer-brand" data-org-name>Junction House</p>
         <p>Support for the whole journey home.<br>A fictional reentry and family stability organization, imagined for this demonstration.</p>
       </div>
       <div>
@@ -355,5 +357,6 @@
 </footer>
 
 <script src="../shared/site.js"></script>
+<script src="../shared/claim.js" defer data-site="junction-house" data-site-label="Junction House" data-claim-url="../claim.html"></script>
 </body>
 </html>
