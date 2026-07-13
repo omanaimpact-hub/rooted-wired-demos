@@ -209,6 +209,9 @@ ul, ol {
   color: rgba(250, 252, 251, 0.88);
   font-size: var(--fs-xs);
   letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 60;
 }
 
 .demo-strip .container {
@@ -256,7 +259,7 @@ ul, ol {
 
 .site-header {
   position: sticky;
-  top: 0;
+  top: var(--strip-h, 0px);
   z-index: 50;
   background: color-mix(in srgb, var(--ground) 88%, transparent);
   backdrop-filter: blur(10px);

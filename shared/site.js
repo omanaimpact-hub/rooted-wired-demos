@@ -9,6 +9,16 @@
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Keep demo strip + site header stacked when sticky ---------- */
+  var strip = document.querySelector(".demo-strip");
+  if (strip) {
+    var setStripHeight = function () {
+      document.documentElement.style.setProperty("--strip-h", strip.offsetHeight + "px");
+    };
+    setStripHeight();
+    window.addEventListener("resize", setStripHeight);
+  }
+
   /* ---------- Mobile nav toggle ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");

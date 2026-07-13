@@ -41,9 +41,15 @@ h1, h2 {
 }
 
 .hub-brand img {
-  height: 46px;
+  height: 52px;
   width: auto;
   display: block;
+}
+
+@media (max-width: 640px) {
+  .hub-brand img {
+    height: 40px;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -115,22 +121,39 @@ h1, h2 {
 .thread::after { top: 62%; background: var(--moss); }
 
 /* Decorative arcs in hero corner */
-.hero-arcs {
+.hero-visual {
   position: absolute;
   right: calc(var(--gutter) * -1);
   top: 50%;
   transform: translateY(-50%);
   width: clamp(220px, 26vw, 380px);
-  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-5);
   pointer-events: none;
 }
 
+.hero-arcs {
+  width: 100%;
+  opacity: 0.9;
+}
+
 @media (max-width: 62rem) {
-  .hero-arcs { display: none; }
+  .hero-visual { display: none; }
 }
 
 .hub-hero .container {
   position: relative;
+}
+
+/* ---------- Footer circle logo ---------- */
+
+.footer-logo {
+  width: 110px;
+  height: auto;
+  display: block;
+  margin-bottom: var(--s-4);
 }
 
 /* ---------- Fiction disclosure ---------- */
